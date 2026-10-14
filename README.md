@@ -124,10 +124,5 @@ Step 8: Default Username And Password For User Is "shashi@gmail.com" and "shashi
 #### "Suggestions and project Improvements are always Invited!"
 
 <bold>Thanks a lot</bold><br/>
-                                                            
-# Add a line to README and recommit
-echo "" >> README.md
-git add README.md
-git commit -m "Update README"
-git push origin master
-
+                                                                                                        Project Leader<br/>
+                                                                                                         <b>Anushka Singh</b>
