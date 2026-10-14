@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+
+  # ── MySQL database service ─────────────────────────────────────────
+  mysql:
+    image: mysql:8.0
+    container_name: tender_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: tender
+      MYSQL_USER: tenderuser
+      MYSQL_PASSWORD: tenderpass
+    volumes:
+      # Auto-seed the DB with all tables + data on first start
+      - ./DataBase/init.sql:/docker-entrypoint-initdb.d/init.sql
+      # Persist data across container restarts
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3307:3306"   # exposed as 3307 locally to avoid conflict with local MySQL
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  # ── Tomcat (Java EE) web application ──────────────────────────────
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tender_app
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      # These match what Railway injects automatically
+      MYSQLHOST: mysql
+      MYSQLPORT: "3306"
+      MYSQLDATABASE: tender
+      MYSQLUSER: tenderuser
+      MYSQLPASSWORD: tenderpass
+    ports:
+      - "8080:8080"
+
+volumes:
+  mysql_data:

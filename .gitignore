@@ -1,0 +1,13 @@
+# IDE files
+.vscode/
+.settings/
+.classpath
+.project
+*.launch
+
+# Maven build output
+tendermanagement/target/
+
+# OS files
+.DS_Store
+Thumbs.db

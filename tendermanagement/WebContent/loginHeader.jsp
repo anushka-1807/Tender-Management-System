@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+
+  <nav class="navbar navbar-inverse"> <!-- Navigation Bar-->
+    <div class="container">
+      <div class="navbar-header"> <!-- Header navigation-->
+
+        <a class="navbar-brand" href="#">
+          <h1>Tender Management System</h1>
+        </a> <!-- Library Name fixed-->
+      </div>
+
+      <ul class="nav navbar-nav navbar-right menusize pull-right"> <!-- Login or signup in right top corner-->
+        <li><a href="register.jsp"><span class="glyphicon glyphicon-user "></span>SignUp</a></li>
+        <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+      <!--Coding for Small Devices navigation-->
+      <div class="navbar-header pull-left hidden-lg hidden-md">
+        <button id="navbarToggle" type="button" class="btn btn-primary navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#collapsable-nav" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span> <!-- Only used by screen readers-->
+          <span class="icon-bar"></span> <!-- Tripple dotted button-->
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div> <!-- End of small device navigation-->
+
+    </div>
+  </nav>
+  <!-- Starting of another line of navigation for menu options-->
+
+  <!-- Notice Publication section starts here-->
